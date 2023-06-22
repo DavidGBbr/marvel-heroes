@@ -1,5 +1,5 @@
-import axiosInstance from "./axiosConfig";
+import api from "./axiosConfig";
 
 export const getCharacters = () => {
-  return axiosInstance.get("");
+  return api.get("/characters");
 };
