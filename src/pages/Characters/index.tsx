@@ -2,6 +2,7 @@ import React, { useCallback, useEffect, useState } from "react";
 import { getCharacters, moreCharacters } from "../../api/apiService";
 import { Character } from "../../types/Character";
 import * as C from "./styles";
+import { Loader } from "../../components/Loader/styles";
 
 const Characters = () => {
   const [characters, setCharacters] = useState<Character[]>([]);
@@ -57,19 +58,23 @@ const Characters = () => {
 
   return (
     <C.Container>
-      <C.CardContainer>
-        {characters.map((character) => (
-          <C.CardItem key={character.id}>
-            <img
-              src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
-              alt={character.name}
-            />
-            <C.CardInfo>
-              <h2 className="name">{character.name}</h2>
-            </C.CardInfo>
-          </C.CardItem>
-        ))}
-      </C.CardContainer>
+      {characters.length ? (
+        <C.CardContainer>
+          {characters.map((character) => (
+            <C.CardItem key={character.id}>
+              <img
+                src={`${character.thumbnail.path}.${character.thumbnail.extension}`}
+                alt={character.name}
+              />
+              <C.CardInfo>
+                <h2 className="name">{character.name}</h2>
+              </C.CardInfo>
+            </C.CardItem>
+          ))}
+        </C.CardContainer>
+      ) : (
+        <Loader />
+      )}
     </C.Container>
   );
 };
