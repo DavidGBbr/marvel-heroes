@@ -6,7 +6,7 @@ export const Container = styled.main`
   align-items: center;
   flex-wrap: wrap;
   width: 100%;
-  min-height: 100vh;
+  min-height: calc(100vh - 165px);
   height: 100%;
   background-color: #10141e;
 `;
