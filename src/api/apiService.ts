@@ -11,3 +11,7 @@ export const moreCharacters = (offset: number) => {
     },
   });
 };
+
+export const getCharacter = (id: string) => {
+  return api.get(`/characters/${id}`);
+};

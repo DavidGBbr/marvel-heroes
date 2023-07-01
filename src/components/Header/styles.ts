@@ -10,6 +10,7 @@ export const Container = styled.header`
 
 export const Logo = styled.img`
   width: 120px;
+  cursor: pointer;
 `;
 
 export const SearchBar = styled.div`
