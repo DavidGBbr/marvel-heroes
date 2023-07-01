@@ -15,3 +15,11 @@ export const moreCharacters = (offset: number) => {
 export const getCharacter = (id: string) => {
   return api.get(`/characters/${id}`);
 };
+
+export const findHeroes = (name: string) => {
+  return api.get(`/characters`, {
+    params: {
+      nameStartsWith: name,
+    },
+  });
+};

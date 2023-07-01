@@ -8,12 +8,15 @@ import React, {
 import * as C from "./styles";
 import { BsSearch } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
-import { getCharacters, moreCharacters } from "../../api/apiService";
+import {
+  findHeroes,
+  getCharacters,
+  moreCharacters,
+} from "../../api/apiService";
 import { GlobalContext } from "../../contexts/AppContext";
 
 const Header = () => {
   const { characters, setCharacters } = useContext(GlobalContext);
-
   const [search, setSearch] = useState("");
   const [infinite, setInfinite] = useState(true);
   const navigate = useNavigate();
@@ -45,6 +48,21 @@ const Header = () => {
   }, []);
 
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await findHeroes(search);
+        setCharacters(response.data.data.results);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    if (search.length) {
+      fetchData();
+    }
+  }, [search, setCharacters]);
+
+  useEffect(() => {
     let wait = false;
     function infiniteScroll() {
       if (infinite) {
@@ -69,6 +87,7 @@ const Header = () => {
   const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
     setSearch(e.target.value);
   };
+
   return (
     <C.Container>
       <C.Logo
