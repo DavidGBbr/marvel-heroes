@@ -43,6 +43,10 @@ export const CardItem = styled.div`
   box-shadow: 2px 4px 12px rgb(0 0 0 / 19%);
   transition: 0.5s;
 
+  @media (max-width: 500px) {
+    flex: 1;
+  }
+
   img {
     height: 220px;
     border-radius: 10px;

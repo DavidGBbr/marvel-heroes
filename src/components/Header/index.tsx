@@ -88,12 +88,24 @@ const Header = () => {
     setSearch(e.target.value);
   };
 
+  const handleLogoClick = () => {
+    setSearch("");
+    navigate("/");
+    getCharacters()
+      .then((response) => {
+        setCharacters(response.data.data.results);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
   return (
     <C.Container>
       <C.Logo
         src="../../../public/Images/logo.png"
         alt="Marvel logo"
-        onClick={() => navigate("/")}
+        onClick={handleLogoClick}
       />
       <C.SearchBar>
         <C.InputSearch

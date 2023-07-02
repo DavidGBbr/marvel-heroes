@@ -6,6 +6,12 @@ export const Container = styled.header`
   display: flex;
   align-items: center;
   gap: 20px;
+
+  @media (max-width: 500px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 20px;
+  }
 `;
 
 export const Logo = styled.img`
@@ -28,6 +34,10 @@ export const InputSearch = styled.input`
   font-size: 18px;
   color: #f1f1f1;
   background-color: transparent;
+
+  @media (max-width: 500px) {
+    width: 100%;
+  }
 `;
 
 export const SearchBtn = styled.button`
