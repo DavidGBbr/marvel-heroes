@@ -19,7 +19,6 @@ const Character = () => {
           const characterData = response.data.data.results[0];
           setCharacter(characterData);
           setComics(characterData.comics.items.slice(0, 5));
-          console.log(response);
         }
       } catch (error) {
         console.log(error);
